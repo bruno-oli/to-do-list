@@ -17,7 +17,11 @@ To do List feita em ReactJS com sistema de salvamento usando o local storage.
 
 #### Desktop
 
-![](./design/desktop-preview.jpg)
+![](./design/desktop-preview.png)
+
+#### Mobile
+
+![](./design/mobile-preview.png)
 
 ### Links
 
