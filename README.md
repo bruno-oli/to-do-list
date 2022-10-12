@@ -4,16 +4,16 @@ To do List feita em ReactJS com sistema de salvamento usando o local storage.
 
 ## Indice
 
-- [Visão geral](#overview)
-  - [Imagens](#screenshot)
+- [Visão geral](#visão-geral)
+  - [Imagens](#imagens)
   - [Links](#links)
-- [Processo](#my-process)
-  - [Tecnologias usadas](#built-with)
-- [Author](#author)
+- [Processo](#meu-processo)
+  - [Tecnologias usadas](#tecnologias)
+- [Author](#contato)
 
-## Overview
+## Visão Geral
 
-### Screenshots
+### Imagens
 
 #### Desktop
 
@@ -27,15 +27,15 @@ To do List feita em ReactJS com sistema de salvamento usando o local storage.
 
 - Live Site: [GitHub Pages](https://bruno-oli.github.io/to-do-list/)
 
-## My process
+## Meu Processo
 
-### Built with
+### Tecnologias
 
 - ReactJS
 - HTML semântico
 - Flexbox
 
-## Author
+## Contato
 
 - Twitter - [@realsayden](https://www.twitter.com/realsayden)
 - GitHub - [@bruno-oli](https://github.com/bruno-oli)
