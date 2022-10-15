@@ -12,28 +12,63 @@ function App() {
   const taskInput = useRef();
   function AddTask() {
     if (taskInput.current.value.length > 0) {
-      setTasks([
-        ...tasks,
-        {
-          id: crypto.randomUUID(),
-          nome: taskInput.current.value,
-          completed: false,
-        },
-      ]);
-      taskInput.current.value = "";
+      let erro = false;
+      tasks.forEach((i) => {
+        if (
+          Object.values(i)[1].toLowerCase() ===
+          taskInput.current.value.toLowerCase()
+        ) {
+          erro = true;
+          window.alert("Essa tarefa já está na sua lista!");
+        }
+      });
+      if (erro === false) {
+        setTasks([
+          ...tasks,
+          {
+            id: crypto.randomUUID(),
+            nome: taskInput.current.value,
+            completed: false,
+            startTime: {
+              day: new Date().getDate(),
+              month: new Date().getMonth(),
+              year: new Date().getFullYear(),
+              hour: new Date().getHours(),
+              minutes: new Date().getMinutes(),
+            },
+          },
+        ]);
+        taskInput.current.value = "";
+      }
     }
   }
   function AddTaskOnEnter(element) {
     if (element.which === 13 && taskInput.current.value.length > 0) {
-      setTasks([
-        ...tasks,
-        {
-          id: crypto.randomUUID(),
-          nome: taskInput.current.value,
-          completed: false,
-        },
-      ]);
-      taskInput.current.value = "";
+      let erro = false;
+      tasks.forEach((i) => {
+        if (Object.values(i)[1] === taskInput.current.value) {
+          erro = true;
+          window.alert("Essa tarefa já está na sua lista!");
+        }
+      });
+      if (erro === false) {
+        setTasks([
+          ...tasks,
+          {
+            id: crypto.randomUUID(),
+            nome: taskInput.current.value,
+            completed: false,
+            startTime: {
+              day: new Date().getDate(),
+              month: new Date().getMonth(),
+              year: new Date().getFullYear(),
+              hour: new Date().getHours(),
+              minutes: new Date().getMinutes(),
+            },
+          },
+        ]);
+        taskInput.current.value = "";
+      }
     }
   }
   function SetTaskCompleted({ target }) {
@@ -82,7 +117,7 @@ function App() {
     function SetTasksStorage() {
       if (loadedRef) {
         window.localStorage.setItem("tasks", JSON.stringify(tasks));
-        setCompleted(document.querySelectorAll('.completed__task').length)
+        setCompleted(document.querySelectorAll(".completed__task").length);
       }
     }
     SetTasksStorage();
@@ -102,25 +137,25 @@ function App() {
           <input
             onKeyDown={AddTaskOnEnter}
             ref={taskInput}
-            placeholder="Add a new task"
+            placeholder="Adicionar uma nova tarefa"
             type="text"
             name="task"
             id="task"
           />
           <button id="addButton" onClick={AddTask}>
-            <span>Create</span> <img src={plus} alt="" />
+            <span>Criar</span> <img src={plus} alt="" />
           </button>
         </div>
         <div className="tasks">
           <div className="task-infos">
             <div className="created">
-              <span className="created-title">Created tasks</span>
+              <span className="created-title">Tarefas criadas</span>
               <CountBox>{tasks.length}</CountBox>
             </div>
             <div className="completed">
-              <span className="completed-title">Completed</span>
+              <span className="completed-title">Completadas</span>
               <CountBox>
-                {completed} out of {tasks.length}
+                {completed} de {tasks.length}
               </CountBox>
             </div>
           </div>
@@ -141,7 +176,13 @@ function App() {
                   ) : (
                     <input onClick={SetTaskCompleted} type="checkbox" />
                   )}
-                  <span className="task__name">{i.nome}</span>
+                  <div>
+                    <span>{i.nome}</span>
+                    <span>
+                      {i.startTime.day}/{i.startTime.month}/{i.startTime.year} (
+                      {i.startTime.hour}:{i.startTime.minutes})
+                    </span>
+                  </div>
                   <img onClick={RemoveTask} src={trash} alt="" />
                 </Task>
               );

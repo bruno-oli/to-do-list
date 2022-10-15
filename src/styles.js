@@ -151,15 +151,27 @@ export const Task = styled.div`
     cursor: pointer;
     width: 2rem;
   }
-  span {
-    color: white;
-    font-weight: 400;
-    font-size: 1em;
-    transition: 0.3s;
-    white-space: nowrap;
-    overflow: hidden;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
     max-width: 60%;
-    text-overflow: ellipsis;
+    span {
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      transition: 0.3s;
+      white-space: nowrap;
+      text-transform: capitalize;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      &:not(:first-child) {
+        color: #808080;
+        font-weight: 400;
+      }
+    }
   }
   &.completed__task {
     span {
